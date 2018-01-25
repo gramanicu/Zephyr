@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sign up for Zephyr Account</title>
+    <link rel="icon" href="../static/images/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+    <link href="../static/css/signup.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container" id="containerFull">
+        <div class="row" id="containerFull">
+            <div class="col align-self-center" id="signupForm">
+                <img src="../static/images/darklogo.png" width="60px" height="60px" class="mx-auto d-block" style="margin-bottom: 16px; border-radius: 50%">
+                <p class="h4 text-center" style="margin-bottom: 16px">Sign up for Zephyr account</p>
+                <form class="form-signin" method="POST" action="/signup">
+                    <div class="form-group">
+                        <label for="usernameInput">Username</label>
+                        <% if (errors == "username") { %>
+                        <input type="text" class="form-control is-invalid" id="usernameInput" name="username" aria-describedby="userHelp" placeholder="Pick a username" required>
+                        <% }else{ %>
+                        <input type="text" class="form-control" id="usernameInput" name="username" aria-describedby="userHelp" placeholder="Pick a username" required>
+                        <% } %>
+                        <div class="invalid-feedback">
+                            Username already registered
+                        </div>
+                        <small id="userHelp" class="form-text text-muted">You can change this later</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@</div>
+                            </div>
+                            <% if (errors == "email") { %>
+                            <input type="email" class="form-control is-invalid" id="emailInput" name="email" placeholder="you@example.com" required>
+                            <% }else{ %>
+                            <input type="email" class="form-control" id="emailInput" name="email" placeholder="you@example.com" required>
+                            <% } %>
+                            <div class="invalid-feedback">
+                                Email already registered
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordInput">Password</label>
+                        <% if (errors == "password") { %>
+                        <input type="password" class="form-control is-invalid" id="passwordInput" name="password" aria-describedby="passwordHelp" placeholder="Create a password" required>
+                        <% }else{ %>
+                        <input type="password" class="form-control" id="passwordInput" name="password" aria-describedby="passwordHelp" placeholder="Create a password" required>
+                        <% } %>
+                        <div class="invalid-feedback">
+                            Invalid Password
+                        </div>
+                        <small id="passwordHelp" class="form-text text-muted">Must have at least 6 characters</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
