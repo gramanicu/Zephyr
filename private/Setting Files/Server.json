@@ -1,7 +1,5 @@
 {
     "port": 3030,
     "username": "admin",
-    "password": "admin",
-    "email": "gramanicu@gmail.com",
-    "pass": "ngml1239"
+    "password": "admin"
 }
