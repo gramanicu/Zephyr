@@ -14,14 +14,22 @@ var nodemailer = require('nodemailer');
 
 //Settings & Important variables
 
-var config = require(path.join(__dirname, '/private/Setting Files/Server.json'));
+var safeconfig = require("C:/Users/Grama Nicolae/Desktop/Server.json");
+//var config = require(path.join(__dirname, '/private/Setting Files/Server.json'));
+var config = safeconfig;
+
 var port = config.port;
 var tunnelUrl;
 var app = express();
 var io;
 
-
-
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: config.email,
+        pass: config.pass
+    }
+});
 
 //Console color formatting
 
@@ -116,33 +124,39 @@ app.use(expressValidator({
 //Express Routing
 
 app.get('/', function (req, res) {
-    console.log(textwarning(req.connection.remoteAddress + " - accesed /home"));
+    console.log(textwarning(req.connection.remoteAddress + " - accessed /home"));
     console.log('');
     res.sendFile(path.join(__dirname, 'private/pages/index.html'));
 });
 
 app.get('/signin', function (req, res) {
-    console.log(textwarning(req.connection.remoteAddress + " - accesed /signin"));
+    console.log(textwarning(req.connection.remoteAddress + " - accessed /signin"));
     console.log('');
     res.render('signin');
 });
 
 app.get('/signup', function (req, res) {
-    console.log(textwarning(req.connection.remoteAddress + " - accesed /signup"));
+    console.log(textwarning(req.connection.remoteAddress + " - accessed /signup"));
     console.log('');
     res.render('signup');
 });
 
 app.get('/about', function (req, res) {
-    console.log(textwarning(req.connection.remoteAddress + " - accesed /about"));
+    console.log(textwarning(req.connection.remoteAddress + " - accessed /about"));
     console.log('');
     res.sendFile((path.join(__dirname, 'private/pages/about.html')));
 });
 
 app.get('/guestlog', function (req, res) {
-    console.log(textwarning(req.connection.remoteAddress + " - accesed /guestlog"));
+    console.log(textwarning(req.connection.remoteAddress + " - accessed /guestlog"));
     console.log('');
     res.sendFile((path.join(__dirname, 'private/pages/guestlog.html')));
+});
+
+app.get('/recover', function (req, res) {
+    console.log(textwarning(req.connection.remoteAddress + " - accessed /recover"));
+    console.log('');
+    res.sendFile((path.join(__dirname, 'private/pages/recover.html')));
 });
 
 app.post('/signup', function (req, res) {
@@ -222,6 +236,38 @@ app.post('/signin', function (req, res) {
             });
         }
     });
+});
+
+app.post('/recover', function (req, res) {
+    console.log(textlogo('/recover Request'));
+
+    db.users.findOne({
+        email: req.body.email
+    }, function (err, result) {
+        if (err) {
+            console.log(texterror(err));
+        }
+        if (result) {
+            var mailOptions = {
+                from: 'gramanicu@gmail.com',
+                to: result.email,
+                subject: 'Zephyr account management',
+                text: 'Here is the password for your Zephyr account! - ' + result.password
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(textwarning('Email with password sent to ' + result.email + ' . - ') + info.response);
+
+                    res.send("Your password was sent to your email account");
+                }
+            });
+        } else {
+            res.render('signin');
+        }
+    })
 });
 
 
