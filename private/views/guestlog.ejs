@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zephyr</title>
+    <link rel="icon" href="static/images/logo/icon.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="bg-light">
+    <div class="container" id="containerFull">
+        <div class="row" id="containerFull">
+            <div class="col align-self-center" id="signinForm">
+                <img src="../static/images/logo/darklogo.png" width="60px" height="60px" class="mx-auto d-block" style="margin-bottom: 32px; border-radius: 50%">
+                <p class="h3 text-center" style="margin-bottom: 16px">Log in anonimously</p>
+                <form class="form-signin" method="POST" action="/guestlog">
+                    <div class="form-group">
+                        <label for="nicknameInput">Choose a nickname</label>
+                        <% if (errors == "exist") { %>
+                            <input type="text" class="form-control is-invalid" id="nicknameInput" aria-describedby="nicknameHelp" name="name" placeholder="username already exists">
+                            <% }else if (errors == "alreadyLogged") { %>
+                                    <input type="text" class="form-control is-invalid" id="nicknameInput" aria-describedby="nicknameHelp" name="name" placeholder="beastmaster64">
+                                    <% }else{ %>
+                                        <input type="text" class="form-control" id="nicknameInput" aria-describedby="nicknameHelp" name="name" placeholder="beastmaster64">
+                                        <% } %>
+                                            <small id="nicknameHelp" class="form-text text-muted">Your name will start with a @ symbol</small>
+                                            <% if(errors == "alreadyLogged"){ %>
+                                                <div class="invalid-feedback">
+                                                    You are already logged in with an account
+                                                </div>
+                                                <% } %>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="static/css/guestlog.css" media="none" onload="if(media!='all')media='all'">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous" defer></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous" defer></script>
+
+</html>

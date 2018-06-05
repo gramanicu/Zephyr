@@ -1,0 +1,14 @@
+{
+  "short_name": "Zephyr",
+  "name": "Zephyr",
+  "icons": [
+    {
+      "src":"/static/images/logo/logo640x640.png",
+      "sizes": "640x640"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#343a40",
+  "theme_color": "#28A745",
+  "display": "standalone"
+}

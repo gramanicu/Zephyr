@@ -1,0 +1,30 @@
+{
+    "serverSettings": {
+        "port": 80,
+        "adapter": "Ethernet",
+        "useNgrokTunneling": false,
+        "token": {
+            "life": 900000,
+            "length": 32
+        },
+        "optionalLogs": false,
+        "anonymUsersInactiveLife": 60000
+    },
+    "emailSettings": {
+        "service": "gmail",
+        "port": 465,
+        "secure": true,
+        "auth": {
+            "user": "youremail@gmail.com",
+            "pass": "yourpassword"
+        }
+    },
+    "databaseSettings": {
+        "module": "mongojs",
+        "mongojs": {
+            "connectionString": "Zephyr",
+            "collections": "users"
+        }
+    }
+
+}

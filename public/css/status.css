@@ -1,0 +1,33 @@
+.container {
+    padding-top: calc(50vh - 10rem);
+}
+
+@media screen and (min-width: 1600px) {
+    html {
+        font-size: 120%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 95%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    html {
+        font-size: 85%;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    html {
+        font-size: 60%;
+    }
+}

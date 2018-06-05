@@ -6,6 +6,16 @@
     display: block;
 }
 
+.btn-primary {
+    background-color: #0068E6 !important;
+    border-color: #0068E6 !important;
+}
+
+.btn-success {
+    background-color: #208836 !important;
+    border-color: #208836 !important;
+}
+
 .cardHr {
     margin: 0px;
 }

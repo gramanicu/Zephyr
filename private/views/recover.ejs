@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Account Recovery</title>
+    <link rel="icon" href="../static/images/logo/icon.png" type="image/x-icon" />
+</head>
+
+<body class="bg-light">
+    <div class="container" id="containerFull">
+        <div class="row" id="containerFull"></div>
+            <div class="col align-self-center" id="signinForm">              
+                    <% if (messages=="Password reset token is invalid or has expired.") { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                Password reset token is invalid or has expired.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                        <% } %>
+                    <% if (success) { %>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <%= success %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                        <% } %>
+                <img src="../static/images/logo/darklogo.png" width="60px" height="60px" class="mx-auto d-block" style="margin-bottom: 16px; border-radius: 50%">
+                <p class="h3 text-center" style="margin-bottom: 16px">Find your account</p>
+                <form class="form-signin" method="POST" action="/recover">
+                    <div class="form-group">
+                        <label for="emailInput">Email adress</label>
+                        <input type="email" class="form-control" name="email" id="emailInput" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Recover password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="static/css/recover.css" media="none" onload="if(media!='all')media='all'">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous" defer></script>
+
+
+
+</html>

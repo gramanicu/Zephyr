@@ -7,23 +7,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Log in to Zephyr</title>
-    <link rel="icon" href="../static/images/icon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
-    <link href="../static/css/signin.css" rel="stylesheet">
+    <link rel="icon" href="../static/images/logo/icon.png" type="image/x-icon" />
 </head>
 
 <body class="bg-light">
     <div class="container" id="containerFull">
         <div class="row" id="containerFull">
             <div class="col align-self-center" id="signinForm">
-                <img src="../static/images/darklogo.png" width="60px" height="60px" class="mx-auto d-block" style="margin-bottom: 16px; border-radius: 50%">
+                <img src="../static/images/logo/darklogo.png" width="60px" height="60px" class="mx-auto d-block" style="margin-bottom: 16px; border-radius: 50%">
                 <p class="h3 text-center" style="margin-bottom: 16px">Sign in to Zephyr</p>
                 <form class="form-signin" method="POST" action="/signin">
                     <div class="form-group">
                         <label for="usernameInput">Username or email adress</label>
-                        <% if (errors == "general") { %>
+                        <% if (errors == "general" || errors=="alreadyLogged") { %>
                             <input type="text" class="form-control is-invalid" name="username" id="usernameInput" required>
                             <% }else{ %>
                                 <input type="text" class="form-control" name="username" id="usernameInput" required>
@@ -34,14 +30,20 @@
                         <label for="passwordInput" class="font-weight-light" style="float:right; font-size: 0.9rem">
                             <a href="recover">Forgot password?</a>
                         </label>
-                        <% if (errors == "general") { %>
+                        <% if (errors == "general" || errors=="alreadyLogged") { %>
                         <input type="password" class="form-control is-invalid" name="password" id="passwordInput" required>
                         <% }else{ %>
                         <input type="password" class="form-control" name="password" id="passwordInput" required>
                         <% } %>
+                        <% if(errors == "alreadyLogged"){ %>
+                            <div class="invalid-feedback">
+                                You are already logged in with an account
+                            </div>    
+                        <% } else { %>
                         <div class="invalid-feedback">
                             Wrong username or password
                         </div>
+                        <% } %>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
                 </form>
@@ -49,5 +51,16 @@
         </div>
     </div>
 </body>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="static/css/signin.css" media="none" onload="if(media!='all')media='all'">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous" defer></script>
+
 
 </html>

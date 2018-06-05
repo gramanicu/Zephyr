@@ -1,4 +1,9 @@
 # Zephyr
 
->This website is still in **development process**. It may include a lot of files wich are used just for learning.
->**Update** - the _homepage and sign pages_ are created.
+![alt text](./public/images/logo/logo160x160.png "Zephyr Logo")
+
+ **Zephyr** is a website inspired by apps like [WhatsApp](https://web.whatsapp.com/) and [Connected2.me](https://connected2.me/). It's main features are :
+* safe communication, withouth any saved data
+* chatting without an account, annonymously
+
+For more information, you can check it's documentation. The only problem is that the documentation in written in Romanian.

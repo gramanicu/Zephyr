@@ -7,31 +7,36 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sign up for Zephyr Account</title>
-    <link rel="icon" href="../static/images/icon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
-    <link href="../static/css/signup.css" rel="stylesheet">
+    <link rel="icon" href="../static/images/logo/icon.png" type="image/x-icon" />
 </head>
 
 <body class="bg-light">
     <div class="container" id="containerFull">
         <div class="row" id="containerFull">
             <div class="col align-self-center" id="signupForm">
-                <img src="../static/images/darklogo.png" width="60px" height="60px" class="mx-auto d-block" style="margin-bottom: 16px; border-radius: 50%">
+                <img src="../static/images/logo/darklogo.png" width="60px" height="60px" class="mx-auto d-block" style="margin-bottom: 16px; border-radius: 50%">
                 <p class="h4 text-center" style="margin-bottom: 16px">Sign up for Zephyr account</p>
                 <form class="form-signin" method="POST" action="/signup">
                     <div class="form-group">
                         <label for="usernameInput">Username</label>
-                        <% if (errors == "username") { %>
-                        <input type="text" class="form-control is-invalid" id="usernameInput" name="username" aria-describedby="userHelp" placeholder="Pick a username" required>
-                        <% }else{ %>
-                        <input type="text" class="form-control" id="usernameInput" name="username" aria-describedby="userHelp" placeholder="Pick a username" required>
-                        <% } %>
-                        <div class="invalid-feedback">
-                            Username already registered
-                        </div>
-                        <small id="userHelp" class="form-text text-muted">You can change this later</small>
+                        <%
+                            var eroare = false; 
+                            if(errors) {
+                                errors.forEach(function(error)
+                                { if(error=="username") eroare=true ;})
+                             } 
+                             if(eroare) {
+                            %>
+                            <input type="text" class="form-control is-invalid" id="usernameInput" name="username" aria-describedby="userHelp" placeholder="Pick a username"
+                                required>
+                            <% }else{ %>
+                                <input type="text" class="form-control" id="usernameInput" name="username" aria-describedby="userHelp" placeholder="Pick a username"
+                                    required>
+                                <% } %>
+                                    <div class="invalid-feedback">
+                                        Username already registered
+                                    </div>
+                                    <small id="userHelp" class="form-text text-muted">You can change this later</small>
                     </div>
                     <div class="form-group">
                         <label for="emailInput">Email</label>
@@ -39,27 +44,43 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">@</div>
                             </div>
-                            <% if (errors == "email") { %>
-                            <input type="email" class="form-control is-invalid" id="emailInput" name="email" placeholder="you@example.com" required>
-                            <% }else{ %>
-                            <input type="email" class="form-control" id="emailInput" name="email" placeholder="you@example.com" required>
-                            <% } %>
-                            <div class="invalid-feedback">
-                                Email already registered
-                            </div>
+                            <%
+                            var eroare = false; 
+                            if(errors) {
+                                errors.forEach(function(error)
+                                { if(error=="email") eroare=true ;})
+                             } 
+                             if(eroare) {
+                            %>
+                                <input type="email" class="form-control is-invalid" id="emailInput" name="email" placeholder="you@example.com" required>
+                                <% }else{ %>
+                                    <input type="email" class="form-control" id="emailInput" name="email" placeholder="you@example.com" required>
+                                    <% } %>
+                                        <div class="invalid-feedback">
+                                            Email already registered
+                                        </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="passwordInput">Password</label>
-                        <% if (errors == "password") { %>
-                        <input type="password" class="form-control is-invalid" id="passwordInput" name="password" aria-describedby="passwordHelp" placeholder="Create a password" required>
-                        <% }else{ %>
-                        <input type="password" class="form-control" id="passwordInput" name="password" aria-describedby="passwordHelp" placeholder="Create a password" required>
-                        <% } %>
-                        <div class="invalid-feedback">
-                            Invalid Password
-                        </div>
-                        <small id="passwordHelp" class="form-text text-muted">Must have at least 6 characters</small>
+                        <%
+                            var eroare = false; 
+                            if(errors) {
+                                errors.forEach(function(error)
+                                { if(error=="password") eroare=true ;})
+                             } 
+                             if(eroare) {
+                            %>
+                            <input type="password" class="form-control is-invalid" id="passwordInput" name="password" aria-describedby="passwordHelp"
+                                placeholder="Create a password" required>
+                            <% }else{ %>
+                                <input type="password" class="form-control" id="passwordInput" name="password" aria-describedby="passwordHelp" placeholder="Create a password"
+                                    required>
+                                <% } %>
+                                    <div class="invalid-feedback">
+                                        Invalid Password
+                                    </div>
+                                    <small id="passwordHelp" class="form-text text-muted">Must have at least 6 characters</small>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
                 </form>
@@ -67,5 +88,18 @@
         </div>
     </div>
 </body>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+        
+    <link rel="stylesheet" href="static/css/signup.css" media="none" onload="if(media!='all')media='all'">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous" defer></script>
+
 
 </html>
