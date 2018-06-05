@@ -374,6 +374,8 @@ app.post('/recover', function (req, res) {
                         'If you did not request this, please ignore this email and your password will remain unchanged.\n'
                 };
             } else {
+                if(config.serverSettings.hostname=="")
+                {
                 mailOptions = {
                     from: 'Zephyr <' + config.emailSettings.auth.user +'>',
                     to: result.email,
@@ -383,6 +385,19 @@ app.post('/recover', function (req, res) {
                         'http://' + serverIp + ":" + port + '/change/' + resetToken + '\n\n' +
                         'If you did not request this, please ignore this email and your password will remain unchanged.\n'
                 };
+            }
+            else
+            {
+                mailOptions = {
+                    from: 'Zephyr <' + config.emailSettings.auth.user +'>',
+                    to: result.email,
+                    subject: 'Zephyr password recovery',
+                    text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                        'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                        config.serverSettings.hostname + '/change/' + resetToken + '\n\n' +
+                        'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                };
+            }
             }
 
             transporter.sendMail(mailOptions, function (error, info) {
