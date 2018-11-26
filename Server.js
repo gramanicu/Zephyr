@@ -24,15 +24,13 @@ var localip = require('local-ip');
 //#region  Settings and Var's
 
 var config = require(path.join(__dirname, '/private/settings/general.json'));
-var iface = config.serverSettings.adapter;
-var serverIp = localip(iface);
 var io;
 var tunnelUrl;
 var app = express();
 
 
 var anonymUserLife = config.serverSettings.anonymUsersInactiveLife;
-
+var hostname =  config.serverSettings.hostname;
 var port = config.serverSettings.port;
 var transporter = nodemailer.createTransport(config.emailSettings);
 
@@ -382,7 +380,7 @@ app.post('/recover', function (req, res) {
                     subject: 'Zephyr password recovery',
                     text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                         'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                        'http://' + serverIp + ":" + port + '/change/' + resetToken + '\n\n' +
+                        hostname + ":" + port + '/change/' + resetToken + '\n\n' +
                         'If you did not request this, please ignore this email and your password will remain unchanged.\n'
                 };
             }
@@ -550,7 +548,7 @@ var server = app.listen(port, function () {
             console.log("");
         });
     } else {
-        tunnelUrl = "http://" + serverIp + ":" + config.serverSettings.port.toString();
+        tunnelUrl = hostname + ":" + config.serverSettings.port.toString();
     }
 
     setInterval(checkForExpiredUsers, anonymUserLife);

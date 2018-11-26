@@ -3,7 +3,7 @@
         "port": 80,
         "adapter": "Ethernet",
         "hostname": "http:/yourHostName.etc",
-        "useNgrokTunneling": false,
+        "useNgrokTunneling": true,
         "token": {
             "life": 900000,
             "length": 32
@@ -16,8 +16,8 @@
         "port": 465,
         "secure": true,
         "auth": {
-            "user": "yourEmailAdress@gmail.com",
-            "pass": "yourPassword"
+            "user": "email",
+            "pass": "password"
         }
     },
     "databaseSettings": {
