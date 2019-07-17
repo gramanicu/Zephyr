@@ -10,7 +10,6 @@ var ngrok = require('ngrok');
 var mongojs = require('mongojs');
 var nodemailer = require('nodemailer');
 var path = require('path');
-var fs = require('fs');
 var sleep = require('system-sleep');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
@@ -18,7 +17,6 @@ var cookieParser = require('cookie-parser');
 var randomstring = require('randomstring');
 var chalk = require('chalk');
 var bcrypt = require('bcrypt');
-var localip = require('local-ip');
 
 //----- Settings & Important variables -----//
 //#region  Settings and Var's
