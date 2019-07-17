@@ -13,10 +13,14 @@
         "html",
         "css"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gramanicu/Zephyr.git"
+    },
     "author": "Grama Nicolae",
     "license": "ISC",
     "dependencies": {
-        "bcrypt": "^1.0.3",
+        "bcrypt": "^2.0.0",
         "body-parser": "^1.18.3",
         "chalk": "^2.4.2",
         "compression": "^1.7.3",
